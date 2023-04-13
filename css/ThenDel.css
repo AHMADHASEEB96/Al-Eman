@@ -1,0 +1,501 @@
+My Drive
+/* Start Variables */
+:root {
+  --main-color: #19c8fa;
+  --transparent-color: rgb(15 116 143 / 70%);
+  --section-padding: 100px;
+   --transparent-color: rgb(15 116 143 / 70%);
+   --p-color : #777;
+}
+/* End Variables */
+/* Start Global Rules */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  
+}
+ul {
+  list-style: none;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
+
+/* Start components */
+.main-heading {
+   padding : 100px;
+   text-align: center;
+   
+}
+
+.main-heading h2 {
+   font-size: 40px;
+   font-weight: normal;
+   margin : 30px ;
+   position: relative;
+   padding : 50px;
+   text-transfrom : uppercase;
+   
+}
+
+.main-heading h2::before {
+   content: "";
+   position: absolute;
+   width: 100px;
+   height: 2px;
+   background: red;
+   left: 50%;
+   transform: translateX(-50%);
+   bottom: 0px;
+      
+}
+
+.main-heading h2::after {
+   content: "";
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   border : 2px solid red;
+   border-radius: 50%;
+   
+   background: white;
+   left: 50%;
+   transform: translateX(-50%);
+   bottom: -10px; /* cause width is 20*/
+}
+
+.main-heading p {
+   font-size:  20px;
+   width: 550px;
+   margin: 0 auto ;
+   color: var(--p-color);
+   line-height: 2;
+   max-width: 100%;  
+   
+   
+}
+
+@media (max-width: 767px) {
+
+    .main-heading {
+        padding : 45px;
+    }
+    .main-heading h2 {
+        margin-bottom: 30px;
+        padding : 35px 0;
+    }
+    
+    .main-heading p {
+        line-height: 1.5;
+        width: 100%;
+        
+        
+    }
+}
+/* End components */
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* End Global Rules */
+
+ /*Start header */
+header {
+    position: absolute; /* to flow over the hero section */
+    width: 100%;
+    z-index: 2;    
+}
+
+header .container a img {
+    height : 40px;
+    margin: auto;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* to hold the before pseudo element*/
+    min-height: 97px; /* to reserve its height when ul displays float: none; and min used so if padding of anchors is intended to he increased the solid height doesnt prevent the process  */
+    
+}
+
+header .container::before {
+    content: "";
+    width: calc(100% - 30px);
+    height: 1px;
+    background: white ;
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+        
+}
+
+header .container nav {
+    flex: 1;
+    
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    osition:relative;
+}
+
+header .container nav ul {
+    display: flex;
+    
+  
+}
+
+header .container nav ul li a {
+    display: block; /* to respect margins and paddings */
+    color : white ;
+    text-decoration: none;
+    padding : 40px 10px ;
+    font-size: 14px;
+    transition: 0.3s;
+    z-index: 1;/* for border to apper on top of that of container*/
+    position: relative; /* for z index to work*/   
+    
+}
+
+header .container nav ul li a.active,
+header .container nav ul li a:hover {
+    color : var(--main-color);
+    border-bottom: 2px solid var(--main-color);/* anchor''s border double of container's to show over it */
+    border-bottom: 1px solid var(--main-color); /* */
+}
+
+header .container nav .form {
+    width : 40px;
+    height : 30px;
+    border-left : 1px solid white ;
+    margin-left : 30px;
+    
+    
+}
+
+header .container nav .form i {
+    position: absolute;
+    color:white;
+    top: 50%;
+    transform: translateY(-50%) ;
+    right : 15px;  /*to start from the bottom line */
+    font-size: 20px; 
+} 
+
+/* header responsive mode */
+
+@media(max-width: 767px) {
+
+    header .toggle-menu {
+       
+        color: white ;
+        argin-right : 20px;
+    }
+    
+    
+header .container nav ul {
+    display: none;
+    
+  
+}
+   
+    
+    header .toggle-menu:hover + ul  {
+        display: flex;
+        flex-direction: column;
+        position: absolute; /*so it doesnt affet the diemnsions of the header it need to be absolute
+        */
+        top: 100%; /* to start fromm the bottom */ 
+       /* bottom: -100%; doesnt work so is bottom -1 */
+       background: rgb(0 0 0 / 0.5);
+       width: calc(100% - 30px);
+       left : 15px;
+       direction: rtl;
+            }
+            
+     header .container nav ul li a {
+         padding :  15px; /*left 15 to start with the line bottm and a other 15 px paading to push the a text inside 15px */
+        /* border: 1px solid white; to see where it starts */
+           }
+    
+    
+    
+      
+    
+}
+
+
+/* End header */
+
+/* Start landing hero section */
+.landing {
+    width : 100vw;
+    height : 100vh;
+    background-image: url("landing.jpg");
+    background-size : cover; /* cuts to fill the bg */
+    position:relative;
+      
+     }
+     
+  
+  
+.landing .overlay {
+    background: rgb( 0 0 0 / 50%);
+    position: absolute;
+    width: 100%; /* of the landing section */
+    height: 100%; 
+       
+    
+ }     
+.landing .text {
+    color: white;
+    position: absolute ;
+    left : 0;
+    top : 50%;
+    transform: translatey(-50%);
+    width: 50%;
+   /* height : 500px; make it resizes accorfing to content */
+    background: var(--transparent-color);
+    padding : 50px;
+    display: flex;
+    justify-content: flex-end;    
+    
+    
+}
+
+
+@media (max-width: 767px) {
+    .landing .text {
+        width: 100%;
+    }
+    .landing .change-bg-l,
+    .landing .change-bg-r {
+        display: none;
+    }
+}
+.landing .text .content h2 {
+    font-weight: normal;
+    font-size: 32px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    max-width: 500px;
+    
+    
+}
+
+.landing .text .content p {
+    line-height: 2;
+    font-size: 14px;
+    }
+    
+.landing .change-bg-l {
+    position: absolute;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 30px;
+}
+
+.landing .change-bg-r {
+    position: absolute;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30px;
+}
+
+.landing .bullets {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    bottom: 30px;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;    
+       
+}
+
+.landing .bullets li {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid white ;   
+    
+    
+}
+
+.landing .bullets li.active {
+   border: 5px solid var(--transparent-color) ;    
+}
+/* End landing hero section */
+
+/* Start services*/
+
+.services-container {
+   display: grid;
+   grid-template-columns : repeat(auto-fill, minmax(300px, 1fr));
+   /* the min width here is decided according to how many columns or items i need to fill the row or the width of the container . */
+   /*grid-template-rows: repeat(2, 1fr); this way it wont subject to responsive mode , will keep the two rows in every screen */
+   grid-template-rows: repeat(2, 1fr);    
+   grid-column-gap : 50px;/* in singular format */  
+    grid-rwo-gap : 70px;   
+    
+}
+
+.services-container .srv-box {
+    margin-top: 50px;
+    display: flex;
+    text-align: center; /* for both icons and text, icon is a text itself*/   
+    
+}
+
+.services-container .srv-box i {
+    flex-basis : 100px;
+    
+}
+
+.services-container .srv-box .text {
+    flex: 1 ;
+}
+
+
+.services-container .srv-box .text h3 {
+   margin-bottom: 30px; 
+   line-height: 1.5;
+   font-size: 20px;
+   color: var(--main-color)
+}
+
+.services-container .srv-box .text p {
+    font-size: 14px;
+    color: var(--p-color);
+    line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+    
+.services-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.services-container .srv-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.services-container .srv-box i {
+    flex-basis : 50px;
+}
+
+
+.services-container .srv-box .text p {
+    padding : 0 30px;
+    
+    
+}
+
+}
+/* End Services-section*/
+
+/* Start Design-section*/
+
+.design {
+    padding : 100px 0 100px 00px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("design-features.jpg");
+    position: relative; 
+    margin-bottom: 100px ;
+    overflow: hidden; /* to hide the image*/    
+}
+/* creating an iverlay using pseudo element*/
+.design:before {
+    content: "";
+    background: rgb( 0 0 0 / 50%);
+    position: absolute;
+    width: 100%; /* of the landing section */
+    height: 100%; 
+}
+
+.design .image {
+    margin-bottom : -260px;
+    margin-left : 120px;
+    flex-basis: 400px; /* tajes width of 400px*/
+    z-index: 2; /* tried for the img itself didnt work*/
+}
+
+.design .text {
+    padding : 50px;
+    background: var(--transparent-color);
+    flex: 1;
+    
+    z-index: 2;
+    
+    
+}
+
+.design .text h2 {
+    font-size: 25px;
+    color: white ;
+    margin-bottom: 20px;
+    tetx-transform : uppercase;
+    
+}
+
+.design .text li {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: white;
+    }
+
+
+
+
+
+
+
+/* End Design-section*/
+
+
+
+
+
+
+ 
